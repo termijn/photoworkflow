@@ -1,0 +1,41 @@
+{
+  "name": "photoworkflow",
+  "version": "1.0.0",
+  "description": "Control your photography workflow from a single workspot",
+  "main": "./dist/bundle.js",
+  "scripts": {
+    "build": "./node_modules/.bin/webpack --config webpack.config.js",
+    "test": "echo \"no tests specified\"",
+    "start": "electron ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/termijn/photoworkflow.git"
+  },
+  "keywords": [
+    "photography",
+    "import",
+    "export",
+    "archive",
+    "photo",
+    "picture",
+    "workflow"
+  ],
+  "author": "Martijn van Geloof",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/termijn/photoworkflow/issues"
+  },
+  "homepage": "https://github.com/termijn/photoworkflow#readme",
+  "devDependencies": {
+    "css-loader": "^1.0.0",
+    "electron": "^2.0.8",
+    "file-loader": "^2.0.0",
+    "html-webpack-plugin": "^3.2.0",
+    "style-loader": "^0.22.1",
+    "webpack-cli": "^3.1.0"
+  },
+  "dependencies": {
+    "webpack": "^4.17.1"
+  }
+}
