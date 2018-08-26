@@ -5,6 +5,7 @@ function createWindow () {
   mainWindow = new BrowserWindow({width: 1024, height: 768});
 
   mainWindow.loadURL('file://' + __dirname + '/index.html');
+  mainWindow.setMenu(null);
 
   mainWindow.webContents.openDevTools()
 
@@ -30,4 +31,4 @@ app.on('activate', function () {
   }
 })
 
-require('./mainmenu.js')
+//require('./mainmenu.js')
