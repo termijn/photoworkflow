@@ -1,15 +1,16 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const HardSourceWebpackPlugin = require('hard-source-webpack-plugin');
 
-module.exports = {
-  entry: './src/js/main.js',
-  mode: 'development', // Set to production in final build
-  target: 'electron-main',
+const commonConfig = {
   output: {
-    filename: 'bundle.js',
+    filename: '[name].js',
     path: path.resolve(__dirname, 'dist')
   },
-  plugins: [new HtmlWebpackPlugin({template: './src/html/index.html'})],
+  node: {
+    __dirname: false
+  },
+  mode: 'development', // Set to production in final build
   module: {
     rules: [
       {
@@ -18,6 +19,17 @@ module.exports = {
           'style-loader',
           'css-loader'
         ]
+      },
+      {
+        test: /\.html$/,
+        use: [ {
+          loader: 'html-loader',
+          options: {
+            minimize: true,
+            removeComments: false,
+            collapseWhitespace: false
+          }
+        }]
       },
       {
         test: /\.(png|svg|jpg|gif)$/,
@@ -33,4 +45,20 @@ module.exports = {
       }
     ]
   }
-};
+}
+
+module.exports = [
+  Object.assign(
+    {
+      target: 'electron-main',
+      entry: { main: './src/js/main.js' }
+    },
+    commonConfig),
+  Object.assign(
+    {
+      target: 'electron-renderer',
+      entry: { gui: './src/js/renderer.js' },
+      plugins: [new HtmlWebpackPlugin({template: './src/html/index.html'})]
+    },
+    commonConfig)
+]

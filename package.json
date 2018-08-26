@@ -2,8 +2,9 @@
   "name": "photoworkflow",
   "version": "1.0.0",
   "description": "Control your photography workflow from a single workspot",
-  "main": "./dist/bundle.js",
+  "main": "./dist/main.js",
   "scripts": {
+    "buildrun": "./node_modules/.bin/webpack --config webpack.config.js && electron .",
     "build": "./node_modules/.bin/webpack --config webpack.config.js",
     "test": "echo \"no tests specified\"",
     "start": "electron ."
@@ -31,11 +32,18 @@
     "css-loader": "^1.0.0",
     "electron": "^2.0.8",
     "file-loader": "^2.0.0",
+    "hard-source-webpack-plugin": "^0.12.0",
+    "html-loader": "^0.5.5",
     "html-webpack-plugin": "^3.2.0",
     "style-loader": "^0.22.1",
     "webpack-cli": "^3.1.0"
   },
   "dependencies": {
+    "bootstrap": "^4.1.3",
+    "electron-photon": "^1.1.6",
+    "jquery": "^3.3.1",
+    "popper.js": "^1.14.4",
+    "semantic-ui": "^2.3.3",
     "webpack": "^4.17.1"
   }
 }
